@@ -14,7 +14,11 @@ const app = express();
 
 /* ---------------- MIDDLEWARE ---------------- */
 app.use(cors({
-  origin: "*"
+  origin: [
+    "https://myshop24.site",
+    "https://www.myshop24.site"
+    ],
+  credentials: true
 }));
 app.use(express.json());
 
