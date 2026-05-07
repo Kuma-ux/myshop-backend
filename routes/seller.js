@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const auth = require("../middleware/auth");
-const SellerPayout = require("../models/SellerPayout");
+const sellerPayout = require("../models/SellerPayout");
 
 // SAVE OR UPDATE payout details
 router.post("/payout", auth, async (req, res) => {
