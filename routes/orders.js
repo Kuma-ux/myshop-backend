@@ -4,8 +4,12 @@ const auth = require("../middleware/auth");
 const express = require("express");
 const router = express.Router();
 const Stripe = require("stripe");
+const stripeKey = process.env.STRIPE_SECRET?.trim();
+if (!stripeKey) {
+  throw new Error("Missing STRIPE_SECRET in environment variables");
+}
+const stripe = require("stripe")(stripeKey);
 const { creditSellerWallet } = require("../services/walletService");
-const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 const paypal = require("@paypal/checkout-server-sdk");
 
 const environment = new paypal.core.SandboxEnvironment(
